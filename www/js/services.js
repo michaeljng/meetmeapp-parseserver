@@ -2,7 +2,7 @@ angular.module('meetme.services', [])
 
 .factory('TimerService', function ($http) {
 
-	var serverAddress = 'http://meetmeserver.herokuapp.com'
+	var serverAddress = 'https://meetmeserver-glacial.herokuapp.com'
 	// var serverAddress = 'http://localhost:9292'
 	var timerEndpoint = '/v1/setTimer'
 	var availabilityTimerEndpoint = '/v1/setAvailabilityTimer/'
@@ -54,12 +54,12 @@ angular.module('meetme.services', [])
 		  var R = 6371; // Radius of the earth in km
 		  var dLat = (lat2-lat1) * (Math.PI/180);  // deg2rad below
 		  var dLon = (lon2-lon1) * (Math.PI/180);
-		  var a = 
+		  var a =
 		    Math.sin(dLat/2) * Math.sin(dLat/2) +
-		    Math.cos(lat1 * (Math.PI/180)) * Math.cos(lat2 * (Math.PI/180)) * 
+		    Math.cos(lat1 * (Math.PI/180)) * Math.cos(lat2 * (Math.PI/180)) *
 		    Math.sin(dLon/2) * Math.sin(dLon/2)
-		    ; 
-		  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+		    ;
+		  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		  var d = R * c; // Distance in km
 		  return d;
 		}
@@ -67,7 +67,7 @@ angular.module('meetme.services', [])
 })
 
 .factory('PubNubService', function (ParseService) {
-	var pubnub = PUBNUB.init({                          
+	var pubnub = PUBNUB.init({
         publish_key   : 'pub-c-630fe092-7461-4246-b9ba-a6b201935fb7',
         subscribe_key : 'sub-c-a57136cc-9870-11e5-b53d-0619f8945a4f',
         ssl: true
@@ -203,8 +203,8 @@ angular.module('meetme.services', [])
 	// 				"X-Parse-REST-API-Key": "GPHw7mJbToX9Tyw7suXilsbkoUoSKN7wpXuTUqJK"}
 
 	//Rise
-	var headers = {	"X-Parse-Application-Id": "LmB0uFwS57tbG9O4JYXvMhe1dBOF0Xmnagio1EhV",
-					"X-Parse-REST-API-Key": "7CG6T7BjtYnnCrjoKqaSqsbY8s8ge6fYCp9z81hY"}
+	var headers = {	"X-Parse-Application-Id": "myAppId_3985469085439650645695476",
+					"X-Parse-REST-API-Key": "97869047593635798922"}
 
 	var obj = {};
 
@@ -212,7 +212,7 @@ angular.module('meetme.services', [])
 	obj.get = function(className, params, callback) {
 		$http({
 			method: 'GET',
-			url: 'https://api.parse.com/1/classes/' + className,
+			url: 'https://glacial-cliffs-88891.herokuapp.com/parse/classes/' + className,
 			params: {"where" : params},
 			headers: headers
 		}).then( function successCallback(response) {
@@ -226,7 +226,7 @@ angular.module('meetme.services', [])
 	obj.getWithInclude = function(className, params, include, callback) {
 		$http({
 			method: 'GET',
-			url: 'https://api.parse.com/1/classes/' + className,
+			url: 'https://glacial-cliffs-88891.herokuapp.com/parse/classes/' + className,
 			params: {"where" : params, "include": include},
 			headers: headers
 		}).then( function successCallback(response) {
@@ -248,7 +248,7 @@ angular.module('meetme.services', [])
 	obj.getSingleObject = function(className, params, callback) {
 		$http({
 			method: 'GET',
-			url: 'https://api.parse.com/1/classes/' + className,
+			url: 'https://glacial-cliffs-88891.herokuapp.com/parse/classes/' + className,
 			params: {"where" : params},
 			headers: headers
 		}).then( function successCallback(response) {
@@ -262,7 +262,7 @@ angular.module('meetme.services', [])
 	obj.getById = function(className, id, callback) {
 		$http({
 			method: 'GET',
-			url: 'https://api.parse.com/1/classes/' + className + "/" + id,
+			url: 'https://glacial-cliffs-88891.herokuapp.com/parse/classes/' + className + "/" + id,
 			headers: headers
 		}).then( function successCallback(response) {
 			callback(response.data);
@@ -275,7 +275,7 @@ angular.module('meetme.services', [])
 	obj.createAndRetrieve = function(className, object, callback) {
 		$http({
 			method: 'POST',
-			url: 'https://api.parse.com/1/classes/' + className,
+			url: 'https://glacial-cliffs-88891.herokuapp.com/parse/classes/' + className,
 			data: object,
 			headers: headers
 		}).then( function successCallback(response) {
@@ -292,7 +292,7 @@ angular.module('meetme.services', [])
 	obj.create = function(className, object, callback) {
 		$http({
 			method: 'POST',
-			url: 'https://api.parse.com/1/classes/' + className,
+			url: 'https://glacial-cliffs-88891.herokuapp.com/parse/classes/' + className,
 			data: object,
 			headers: headers
 		}).then( function successCallback(response) {
@@ -306,7 +306,7 @@ angular.module('meetme.services', [])
 	obj.updateAndRetrieve = function(className, id, params, callback) {
 		$http({
 			method: 'PUT',
-			url: 'https://api.parse.com/1/classes/' + className + '/' + id,
+			url: 'https://glacial-cliffs-88891.herokuapp.com/parse/classes/' + className + '/' + id,
 			data: params,
 			headers: headers
 		}).then( function successCallback(response) {
@@ -322,7 +322,7 @@ angular.module('meetme.services', [])
 	obj.update = function(className, id, params, callback) {
 		$http({
 			method: 'PUT',
-			url: 'https://api.parse.com/1/classes/' + className + '/' + id,
+			url: 'https://glacial-cliffs-88891.herokuapp.com/parse/classes/' + className + '/' + id,
 			data: params,
 			headers: headers
 		}).then( function successCallback(response) {
